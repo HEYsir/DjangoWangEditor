@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 import os
 
 # get settings
-from settings import UploadSettings
+from .settings import UploadSettings
 # get a unique id by uuid.uuid4()
 import uuid
 
@@ -18,7 +18,7 @@ def save_upload_file(PostFile,FilePath):
 		f = open(FilePath, 'wb')
 		for chunk in PostFile.chunks():
 			f.write(chunk)
-	except Exception,E:
+	except Exception as E:
 		f.close()
 		return u"writing file error:"+ E.message
 	f.close()
